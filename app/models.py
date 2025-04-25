@@ -7,6 +7,7 @@ class Player(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(100), unique=True, nullable=False)
     hash_password = Column(String(100), nullable=False)
+    auth_token = Column(String(500), nullable=True)
     created_at = Column(TIMESTAMP, default=get_moscow_time)
 
 class Logs(Base):

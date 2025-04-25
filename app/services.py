@@ -22,6 +22,15 @@ class AuthService:
         user = db.query(Player).filter_by(username=username).first()
         if not user or not verify_password(password, user.hash_password):
             raise ValueError("Invalid credentials")
+
+        # Генерация нового токена
+        access_token = create_access_token(data={"sub": str(user.id)})
+
+        # Обновление поля auth_token в базе данных
+        user.auth_token = access_token
+        db.commit()
+        db.refresh(user)
+
         return user
 
     def generate_token(self, user_id: int) -> str:
