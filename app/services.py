@@ -3,7 +3,7 @@ from .models import Player, PlayerLog
 from .schemas import RegisterRequest
 from .security import hash_password, verify_password, create_access_token
 from datetime import datetime
-
+from app.utils.time_tracker import get_moscow_time
 
 class AuthService:
     def register_user(self, db: Session, user_data: RegisterRequest) -> Player:
@@ -34,9 +34,9 @@ class MetricsService:
             log_entry = PlayerLog(
                 Players_id=user_id,
                 log_text=entry.get("log_text"),
-                created_at=datetime.utcnow(),
-                entered_at=datetime.utcnow(),
-                exit_at=datetime.utcnow()
+                created_at=get_moscow_time(),
+                entered_at=get_moscow_time(),
+                exit_at=get_moscow_time()
             )
             db.add(log_entry)
         db.commit()
