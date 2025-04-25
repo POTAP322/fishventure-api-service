@@ -1,7 +1,6 @@
 from datetime import datetime
 import pytz
 
-moscow_tz = pytz.timezone('Europe/Moscow')
-
 def get_moscow_time():
+    moscow_tz = pytz.timezone('Europe/Moscow')
     return datetime.now(moscow_tz)
