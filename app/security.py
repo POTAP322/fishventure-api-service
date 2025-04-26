@@ -4,7 +4,6 @@ from fastapi import HTTPException
 from jose import jwt, JWTError
 from .config import settings
 import bcrypt
-from utils.time_tracker import get_moscow_time
 
 def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')

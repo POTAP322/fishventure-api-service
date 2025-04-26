@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from .database import engine, Base
-from .routers import auth, metrics,logs
+from .routers import auth, player_logs, logs
 
 app = FastAPI(title="Fishventure API")
 
@@ -10,7 +10,7 @@ Base.metadata.create_all(bind=engine)
 # Подключаем роутеры
 app.include_router(auth.router)
 app.include_router(logs.router)
-app.include_router(metrics.router)
+app.include_router(player_logs.router)
 
 
 if __name__ == "__main__":

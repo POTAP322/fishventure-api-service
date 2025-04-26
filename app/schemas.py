@@ -13,7 +13,7 @@ class LoginRequest(BaseModel):
 class TokenResponse(BaseModel):
     auth_token: str
 
-class MetricsRequest(BaseModel):
+class PlayerLogRequest(BaseModel):
     auth_token: str
     data: List[dict]
 

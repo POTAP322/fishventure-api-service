@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from .models import Player, PlayerLog
+from .models import Player, PlayerLogs
 from .schemas import RegisterRequest
 from .security import hash_password, verify_password, create_access_token
 from datetime import datetime
@@ -37,10 +37,10 @@ class AuthService:
         return create_access_token(data={"sub": str(user_id)})
 
 
-class MetricsService:
-    def save_metrics(self, db: Session, user_id: int, data: list[dict]) -> None:
+class PlayerLogsService:
+    def save_player_logs(self, db: Session, user_id: int, data: list[dict]) -> None:
         for entry in data:
-            log_entry = PlayerLog(
+            log_entry = PlayerLogs(
                 Players_id=user_id,
                 log_text=entry.get("log_text"),
                 created_at=get_moscow_time(),

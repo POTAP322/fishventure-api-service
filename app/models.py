@@ -16,7 +16,7 @@ class Logs(Base):
     log_text = Column(String(400))
     created_at = Column(TIMESTAMP, default=get_moscow_time)
 
-class PlayerLog(Base):
+class PlayerLogs(Base):
     __tablename__ = "PlayerLogs"
     id = Column(Integer, primary_key=True)
     Players_id = Column(Integer, ForeignKey("Players.id", ondelete="CASCADE"))
