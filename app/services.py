@@ -11,7 +11,7 @@ class AuthService:
         if existing_user:
             raise ValueError("User already exists")
 
-        hashed_password = hash_password(user_data.hash_password)
+        hashed_password = hash_password(user_data.password)
         new_user = Player(username=user_data.login, hash_password=hashed_password)
         db.add(new_user)
         db.commit()

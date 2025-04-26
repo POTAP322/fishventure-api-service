@@ -4,11 +4,15 @@ from typing import List, Optional
 
 class RegisterRequest(BaseModel):
     login: str
-    hash_password: str
+    password: str
+
+class PlayerResponse(BaseModel):
+    id: int
+    username: str
 
 class LoginRequest(BaseModel):
     login: str
-    hash_password: str
+    password: str
 
 class TokenResponse(BaseModel):
     auth_token: str
