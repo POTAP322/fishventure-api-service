@@ -2,8 +2,7 @@ from sqlalchemy.orm import Session
 from .models import Player, PlayerLogs,Logs
 from .schemas import RegisterRequest, LogCreateRequest, PlayerLogCreateRequest
 from .security import hash_password, verify_password, create_access_token
-from datetime import datetime
-from api.utils.time_tracker import get_moscow_time
+
 
 class AuthService:
     def register_user(self, db: Session, user_data: RegisterRequest) -> Player:

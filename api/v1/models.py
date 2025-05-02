@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, TIMESTAMP, ForeignKey, Date
 from .database import Base
-from api.utils.time_tracker import get_moscow_time
+from api.v1.utils.time_tracker import get_moscow_time
 
 class Player(Base):
     __tablename__ = "Players"
