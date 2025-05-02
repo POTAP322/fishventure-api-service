@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from .models import Player, PlayerLogs,Logs
-from .schemas import RegisterRequest, LogCreateRequest, PlayerLogCreateRequest
+from .schemas import RegisterRequest, LogCreateRequest, PlayerLogCreateRequest, RefreshRequest
 from .security import hash_password, verify_password, create_access_token
 
 
@@ -35,6 +35,24 @@ class AuthService:
     def generate_token(self, user_id: int) -> str:
         return create_access_token(data={"sub": str(user_id)})
 
+    def refresh_token(self, db: Session, user_data: RefreshRequest) -> Player:
+        user = db.query(Player).filter_by(username=user_data.login).first()
+        if not user:
+            raise ValueError("User not found")
+        #проверяем, совпадает ли переданный токен с текущим токеном пользователя
+        if user.auth_token != user_data.auth_token:
+            raise ValueError("Invalid token")
+
+        # Генерация нового токена
+        access_token = create_access_token(data={"sub": str(user.id)})
+        # Обновление поля auth_token в базе данных
+        user.auth_token = access_token
+        db.commit()
+        db.refresh(user)
+        return user
+
+
+
 
 class LogsService:
     def save_log(self, db: Session, log_data: LogCreateRequest) -> Logs:
@@ -46,8 +64,11 @@ class LogsService:
 
 class PlayerLogsService:
     def save_player_log(self, db: Session, player_log_data: PlayerLogCreateRequest) -> PlayerLogs:
+        player = db.query(Player).filter_by(username=player_log_data.login).first()
+        if not player:
+            raise ValueError("User with this login does not exist")
         new_log = PlayerLogs(
-            player_id=player_log_data.player_id,
+            player_id=player.id,
             entered_at=player_log_data.entered_at,
             exit_at=player_log_data.exit_at
         )

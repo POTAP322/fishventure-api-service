@@ -17,7 +17,8 @@ class LoginRequest(BaseModel):
 
 class PlayerLogCreateRequest(BaseModel):
     auth_token: str
-    player_id: int
+    login: str
+    #player_id: int
     entered_at: date
     exit_at: date
 
@@ -28,6 +29,8 @@ class PlayerLogResponse(BaseModel):
 
 
 class LogCreateRequest(BaseModel):
+    auth_token: str
+    login: str
     log_text: str
 
 class LogCreateResponse(BaseModel):
@@ -38,7 +41,12 @@ class LogCreateResponse(BaseModel):
 
 class TokenResponse(BaseModel):
     auth_token: str
+
 class PlayerResponse(BaseModel):
     id: int
-    username: str
+    login: str
     birth_date: date
+
+class RefreshRequest(BaseModel):
+    auth_token: str
+    login: str

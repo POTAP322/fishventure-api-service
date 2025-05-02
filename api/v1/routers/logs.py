@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from ..database import get_db
 from ..models import Logs
 from ..schemas import LogCreateRequest, LogCreateResponse
+from ..security import verify_token
 from ..services import LogsService
 from datetime import datetime
 
@@ -12,6 +13,7 @@ router = APIRouter(prefix="/logs", tags=["Logs"])
 log_service = LogsService()
 @router.post("/", response_model=LogCreateResponse)
 def create_log(log: LogCreateRequest, db: Session = Depends(get_db)):
+    verify_token(log.auth_token, log.login, db)
     try:
         new_log = log_service.save_log(db, log)
         created_at_str = new_log.created_at.strftime('%Y-%m-%d %H:%M:%S')

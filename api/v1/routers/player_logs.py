@@ -13,7 +13,7 @@ player_logs_service = PlayerLogsService()
 
 @router.post("/", response_model=PlayerLogResponse)
 def create_player_log(player_log: PlayerLogCreateRequest, db: Session = Depends(get_db)):
-    verify_token(player_log.auth_token)
+    verify_token(player_log.auth_token, player_log.login, db)
     try:
         new_player_log = player_logs_service.save_player_log(db, player_log)
         entered_at_str = new_player_log.entered_at.strftime('%Y-%m-%d')

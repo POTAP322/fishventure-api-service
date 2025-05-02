@@ -2,7 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from ..database import get_db
 from ..services import AuthService
-from ..schemas import RegisterRequest, LoginRequest, TokenResponse, PlayerResponse
+from ..schemas import RegisterRequest, LoginRequest, TokenResponse, PlayerResponse, RefreshRequest
+from ..security import verify_token
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 auth_service = AuthService()
@@ -19,7 +20,15 @@ def register(user: RegisterRequest, db: Session = Depends(get_db)):
 def login(user_data: LoginRequest, db: Session = Depends(get_db)):
     try:
         user = auth_service.authenticate_user(db, user_data.login, user_data.password)
-        token = auth_service.generate_token(user.id)
-        return {"auth_token": token}
+        return {"auth_token": user.auth_token}
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+@router.post("/refresh", response_model=TokenResponse)
+def refresh(user_data: RefreshRequest, db: Session = Depends(get_db)):
+    try:
+        #verify_token(user_data.auth_token, user_data.login, db)
+        user = auth_service.refresh_token(db, user_data)
+        return {"auth_token": user.auth_token}
     except ValueError as e:
         raise HTTPException(400, str(e))
