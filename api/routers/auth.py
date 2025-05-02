@@ -11,7 +11,7 @@ auth_service = AuthService()
 def register(user: RegisterRequest, db: Session = Depends(get_db)):
     try:
         new_user = auth_service.register_user(db, user)
-        return {"id": new_user.id, "username": new_user.username}
+        return {"id": new_user.id, "username": new_user.username, "birth_date": new_user.birth_date}
     except ValueError as e:
         raise HTTPException(400, str(e))
 

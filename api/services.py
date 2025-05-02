@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
-from .models import Player, PlayerLogs
-from .schemas import RegisterRequest
+from .models import Player, PlayerLogs,Logs
+from .schemas import RegisterRequest, LogCreateRequest, PlayerLogCreateRequest
 from .security import hash_password, verify_password, create_access_token
 from datetime import datetime
-from app.utils.time_tracker import get_moscow_time
+from api.utils.time_tracker import get_moscow_time
 
 class AuthService:
     def register_user(self, db: Session, user_data: RegisterRequest) -> Player:
@@ -12,7 +12,7 @@ class AuthService:
             raise ValueError("User already exists")
 
         hashed_password = hash_password(user_data.password)
-        new_user = Player(username=user_data.login, hash_password=hashed_password)
+        new_user = Player(username=user_data.login, hash_password=hashed_password, birth_date=user_data.birth_date)
         db.add(new_user)
         db.commit()
         db.refresh(new_user)
@@ -37,15 +37,22 @@ class AuthService:
         return create_access_token(data={"sub": str(user_id)})
 
 
-class PlayerLogsService:
-    def save_player_logs(self, db: Session, user_id: int, data: list[dict]) -> None:
-        for entry in data:
-            log_entry = PlayerLogs(
-                Players_id=user_id,
-                log_text=entry.get("log_text"),
-                created_at=get_moscow_time(),
-                entered_at=get_moscow_time(),
-                exit_at=get_moscow_time()
-            )
-            db.add(log_entry)
+class LogsService:
+    def save_log(self, db: Session, log_data: LogCreateRequest) -> Logs:
+        new_log = Logs(log_text=log_data.log_text)
+        db.add(new_log)
         db.commit()
+        db.refresh(new_log)
+        return new_log
+
+class PlayerLogsService:
+    def save_player_log(self, db: Session, player_log_data: PlayerLogCreateRequest) -> PlayerLogs:
+        new_log = PlayerLogs(
+            player_id=player_log_data.player_id,
+            entered_at=player_log_data.entered_at,
+            exit_at=player_log_data.exit_at
+        )
+        db.add(new_log)
+        db.commit()
+        db.refresh(new_log)
+        return new_log
