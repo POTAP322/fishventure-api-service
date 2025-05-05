@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="Feat(FISH-67): добавлен эндпоинт Refresh">
-      <change afterPath="$PROJECT_DIR$/api/v1/routers/qwen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/test.py" beforeDir="false" />
+    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="Feat(FISH-70): интегрирован qwen api">
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746221945063</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Feat(FISH-70): интегрирован qwen api">
+      <option name="closed" value="true" />
+      <created>1746467862850</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746467862850</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +248,8 @@
     <MESSAGE value="feat(FISH-62): Исправление ошибок логирования при обращения к базе данных" />
     <MESSAGE value="chore: доработана структура проекта" />
     <MESSAGE value="Feat(FISH-67): добавлен эндпоинт Refresh" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat(FISH-67): добавлен эндпоинт Refresh" />
+    <MESSAGE value="Feat(FISH-70): интегрирован qwen api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat(FISH-70): интегрирован qwen api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
