@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .database import engine, Base
+from api.v1.database import engine, Base
 from .routers import auth, player_logs, logs, qwen
 
 app = FastAPI(title="Fishventure API")

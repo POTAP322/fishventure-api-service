@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from ..database import get_db
+from api.v1.database import get_db
 from ..services import AuthService
 from ..schemas import RegisterRequest, LoginRequest, TokenResponse, PlayerResponse, RefreshRequest
 from ..security import verify_token
@@ -12,7 +12,7 @@ auth_service = AuthService()
 def register(user: RegisterRequest, db: Session = Depends(get_db)):
     try:
         new_user = auth_service.register_user(db, user)
-        return {"id": new_user.id, "username": new_user.username, "birth_date": new_user.birth_date}
+        return {"id": new_user.id, "login": new_user.username, "birth_date": new_user.birth_date}
     except ValueError as e:
         raise HTTPException(400, str(e))
 
