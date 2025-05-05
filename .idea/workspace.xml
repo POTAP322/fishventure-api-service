@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="Feat(FISH-70): интегрирован qwen api">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="chore: дополнен requirements.txt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746467862850</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="chore: дополнен requirements.txt">
+      <option name="closed" value="true" />
+      <created>1746467938676</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746467938676</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,7 +259,8 @@
     <MESSAGE value="chore: доработана структура проекта" />
     <MESSAGE value="Feat(FISH-67): добавлен эндпоинт Refresh" />
     <MESSAGE value="Feat(FISH-70): интегрирован qwen api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat(FISH-70): интегрирован qwen api" />
+    <MESSAGE value="chore: дополнен requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: дополнен requirements.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
