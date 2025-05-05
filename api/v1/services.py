@@ -1,8 +1,9 @@
+import requests
 from sqlalchemy.orm import Session
 from .models import Player, PlayerLogs,Logs
 from .schemas import RegisterRequest, LogCreateRequest, PlayerLogCreateRequest, RefreshRequest
 from .security import hash_password, verify_password, create_access_token
-
+from .config import settings
 
 class AuthService:
     def register_user(self, db: Session, user_data: RegisterRequest) -> Player:
@@ -76,3 +77,24 @@ class PlayerLogsService:
         db.commit()
         db.refresh(new_log)
         return new_log
+
+
+class QwenService:
+    def generate_text(self, prompt: str, max_tokens: int = 100) -> str:
+        headers = {
+            "Authorization": f"Bearer {settings.QWEN_API_KEY}",
+            "Content-Type": "application/json",
+        }
+        data = {
+            "model": settings.QWEN_MODEL,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": max_tokens
+        }
+        response = requests.post(
+            f"{settings.QWEN_API_URL}/chat/completions",
+            json=data,
+            headers=headers
+        )
+        response.raise_for_status()
+        return response.json()["choices"][0]["message"]["content"]
+

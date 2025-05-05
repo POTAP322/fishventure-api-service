@@ -50,3 +50,10 @@ class PlayerResponse(BaseModel):
 class RefreshRequest(BaseModel):
     auth_token: str
     login: str
+
+
+class QwenGenerateRequest(BaseModel):
+    auth_token: str
+    login: str
+    prompt: str
+    max_tokens: int = 250

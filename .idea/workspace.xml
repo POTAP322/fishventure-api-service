@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="chore: доработана структура проекта">
+    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="Feat(FISH-67): добавлен эндпоинт Refresh">
+      <change afterPath="$PROJECT_DIR$/api/v1/routers/qwen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/routers/logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/logs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/routers/player_logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/player_logs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/v1/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/security.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/v1/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,17 +45,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dima/PycharmProjects/fishventure-backend-b37ace6b63cb357a2422ce07530f7147567e63a6&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Test.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "C:/Users/dima/PycharmProjects/myTasks"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dima\PycharmProjects\fishventure-api-service\api\v1" />
@@ -215,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746208285429</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Feat(FISH-67): добавлен эндпоинт Refresh">
+      <option name="closed" value="true" />
+      <created>1746221945063</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746221945063</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,7 +246,8 @@
     <MESSAGE value="chore: исправлен response body для регистрации, убрана ненужная регистрация токена авторизации при регистрации" />
     <MESSAGE value="feat(FISH-62): Исправление ошибок логирования при обращения к базе данных" />
     <MESSAGE value="chore: доработана структура проекта" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: доработана структура проекта" />
+    <MESSAGE value="Feat(FISH-67): добавлен эндпоинт Refresh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat(FISH-67): добавлен эндпоинт Refresh" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -251,16 +261,6 @@
           <url>file://$PROJECT_DIR$/api/v1/security.py</url>
           <line>21</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/api/v1/test.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/api/v1/test.py</url>
-          <line>5</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
