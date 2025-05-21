@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="chore: дополнен requirements.txt">
+    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="chore: исправлен небольшой баг с маршрутизатором auth">
+      <change afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/v1/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/routers/player_logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/player_logs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/v1/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/services.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,17 +45,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Test.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/dima/PycharmProjects/myTasks"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dima/PycharmProjects/myTasks&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dima\PycharmProjects\fishventure-api-service\api\v1" />
@@ -235,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746467938676</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="chore: исправлен небольшой баг с маршрутизатором auth">
+      <option name="closed" value="true" />
+      <created>1746482251959</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746482251959</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,7 +273,8 @@
     <MESSAGE value="Feat(FISH-67): добавлен эндпоинт Refresh" />
     <MESSAGE value="Feat(FISH-70): интегрирован qwen api" />
     <MESSAGE value="chore: дополнен requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: дополнен requirements.txt" />
+    <MESSAGE value="chore: исправлен небольшой баг с маршрутизатором auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: исправлен небольшой баг с маршрутизатором auth" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,8 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional
+from api.v1.utils.time_tracker import get_moscow_time
 
-from datetime import date
-
+from datetime import date, datetime
 
 
 class RegisterRequest(BaseModel):
@@ -18,14 +18,23 @@ class LoginRequest(BaseModel):
 class PlayerLogCreateRequest(BaseModel):
     auth_token: str
     login: str
-    #player_id: int
-    entered_at: date
-    exit_at: date
+    entered_at: datetime = Field(
+        default_factory=get_moscow_time(),
+        example=get_moscow_time().isoformat()
+    )
+    exit_at: datetime = Field(
+        default_factory=get_moscow_time(),
+        example=get_moscow_time().isoformat()
+    )
 
 class PlayerLogResponse(BaseModel):
     id: int
-    entered_at: date
-    exit_at: date
+    entered_at: datetime = Field(
+        default_factory=get_moscow_time(),
+    )
+    exit_at: datetime = Field(
+        default_factory=get_moscow_time(),
+    )
 
 
 class LogCreateRequest(BaseModel):
@@ -42,10 +51,6 @@ class LogCreateResponse(BaseModel):
 class TokenResponse(BaseModel):
     auth_token: str
 
-class PlayerResponse(BaseModel):
-    id: int
-    login: str
-    birth_date: date
 
 class RefreshRequest(BaseModel):
     auth_token: str
@@ -56,4 +61,4 @@ class QwenGenerateRequest(BaseModel):
     auth_token: str
     login: str
     prompt: str
-    max_tokens: int = 250
+    max_tokens: int = 600

@@ -16,13 +16,11 @@ def create_player_log(player_log: PlayerLogCreateRequest, db: Session = Depends(
     verify_token(player_log.auth_token, player_log.login, db)
     try:
         new_player_log = player_logs_service.save_player_log(db, player_log)
-        entered_at_str = new_player_log.entered_at.strftime('%Y-%m-%d')
-        exit_at_str = new_player_log.exit_at.strftime('%Y-%m-%d')
         return {
             "id": new_player_log.id,
             "player_id": new_player_log.player_id,
-            "entered_at": entered_at_str,
-            "exit_at": exit_at_str
+            "entered_at": new_player_log.entered_at,
+            "exit_at": new_player_log.exit_at
         }
     except ValueError as e:
         raise HTTPException(400, str(e))

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 from sqlalchemy.orm import Session
 from .models import Player, PlayerLogs,Logs
@@ -10,6 +12,13 @@ class AuthService:
         existing_user = db.query(Player).filter_by(username=user_data.login).first()
         if existing_user:
             raise ValueError("User already exists")
+
+        #регистрация только с 12 лет
+        birth_date = user_data.birth_date
+        today = datetime.today()
+        age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+        if age < 12:
+            raise ValueError("User must be at least 12 years old to register")
 
         hashed_password = hash_password(user_data.password)
         new_user = Player(username=user_data.login, hash_password=hashed_password, birth_date=user_data.birth_date)
@@ -68,6 +77,10 @@ class PlayerLogsService:
         player = db.query(Player).filter_by(username=player_log_data.login).first()
         if not player:
             raise ValueError("User with this login does not exist")
+
+        if player_log_data.entered_at > player_log_data.exit_at:
+            raise ValueError("Entered time cannot be after exit time")
+
         new_log = PlayerLogs(
             player_id=player.id,
             entered_at=player_log_data.entered_at,
