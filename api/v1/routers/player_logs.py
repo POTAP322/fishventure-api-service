@@ -42,14 +42,5 @@ def get_player_log(log_id: int, db: Session = Depends(get_db)):
 @router.get("/", response_model=List[PlayerLogResponse])
 def list_player_logs(db: Session = Depends(get_db)):
     player_logs = db.query(PlayerLogs).all()
-    response = []
-    for log in player_logs:
-        entered_at_str = log.entered_at.strftime('%Y-%m-%d')
-        exit_at_str = log.exit_at.strftime('%Y-%m-%d')
-        response.append({
-            "id": log.id,
-            "player_id": log.player_id,
-            "entered_at": entered_at_str,
-            "exit_at": exit_at_str
-        })
-    return response
+
+    return [log.__dict__ for log in player_logs]

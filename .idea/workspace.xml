@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="chore: исправлен небольшой баг с маршрутизатором auth">
-      <change afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="99b33918-9ce1-405c-8137-756862b172d8" name="Changes" comment="chore: починино получение list_player_logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/v1/routers/player_logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/routers/player_logs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/v1/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/services.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +242,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746482251959</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="FEAT(FISH-81): Внесены правки, в соответсвии с отчётом тестирования">
+      <option name="closed" value="true" />
+      <created>1747856058129</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747856058129</updated>
+    </task>
+    <task id="LOCAL-00014" summary="chore: починино получение list_player_logs">
+      <option name="closed" value="true" />
+      <created>1747859384123</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747859384123</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,7 +284,9 @@
     <MESSAGE value="Feat(FISH-70): интегрирован qwen api" />
     <MESSAGE value="chore: дополнен requirements.txt" />
     <MESSAGE value="chore: исправлен небольшой баг с маршрутизатором auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: исправлен небольшой баг с маршрутизатором auth" />
+    <MESSAGE value="FEAT(FISH-81): Внесены правки, в соответсвии с отчётом тестирования" />
+    <MESSAGE value="chore: починино получение list_player_logs" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: починино получение list_player_logs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
