@@ -25,9 +25,9 @@ def create_log(log: LogCreateRequest, db: Session = Depends(get_db)):
 @router.get("/{log_id}", response_model=LogCreateResponse)
 def get_log(log_id: int, db: Session = Depends(get_db)):
     log = db.query(Logs).filter(Logs.id == log_id).first()
-    created_at_str = log.created_at.strftime('%Y-%m-%d %H:%M:%S')
     if not log:
         raise HTTPException(status_code=404, detail="Log not found")
+    created_at_str = log.created_at.strftime('%Y-%m-%d %H:%M:%S')
     return {"id": log.id, "log_text": log.log_text, "created_at": created_at_str}
 
 @router.get("/", response_model=List[LogCreateResponse])
