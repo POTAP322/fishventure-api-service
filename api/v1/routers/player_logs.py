@@ -42,4 +42,5 @@ def get_player_log(log_id: int, db: Session = Depends(get_db)):
 @router.get("/", response_model=List[PlayerLogResponse])
 def list_player_logs(db: Session = Depends(get_db)):
     player_logs = db.query(PlayerLogs).all()
+
     return [log.__dict__ for log in player_logs]
