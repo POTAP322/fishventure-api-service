@@ -20,9 +20,9 @@ def prepare_test_environment():
     # 1. Создаём тестовую БД
     try:
         conn = pymysql.connect(
-            host="localhost",
-            user="root",
-            password="gh245hyt",
+            host="5.35.89.153",
+            user="admin",
+            password="ker555!Rss",
             autocommit=True
         )
         with conn.cursor() as cursor:
@@ -31,7 +31,8 @@ def prepare_test_environment():
     except Exception as e:
         pytest.fail(f"Ошибка создания БД: {str(e)}")
     finally:
-        conn.close()
+        if 'conn' in locals():
+            conn.close()
 
     # 2. Создаём таблицы
     engine = create_engine(settings.TEST_DATABASE_URL)
