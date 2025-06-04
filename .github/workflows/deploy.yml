@@ -1,0 +1,65 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Проверка кода
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Шаг 2: Установка зависимостей
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.3'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Шаг 3: Запуск тестов
+      - name: Run tests
+        run: |
+          pytest
+
+      # Шаг 4: Подключение к серверу и обновление кода
+      - name: Deploy to server
+        run: |
+          ssh root@5.35.89.153 << 'EOF'
+          cd /root/fishventure-api-service
+          
+          # Сохранение локальных изменений
+          git stash push -m "Сохранение локальных изменений перед обновлением"
+          
+          # Обновление кода из GitHub
+          git pull origin master
+          
+          # Применение локальных изменений
+          git stash pop || true
+          
+          # Разрешение конфликтов (если есть)
+          if git diff --name-only --diff-filter=U | grep -q .; then
+            echo "Разрешение конфликтов..."
+            git add .
+            git commit -m "Resolved merge conflicts after stash pop"
+          fi
+          
+          # Установка зависимостей
+          pip install -r requirements.txt
+          
+          # Применение миграций базы данных (если есть)
+          alembic upgrade head
+          
+          # Перезапуск сервера
+          sudo systemctl restart your_service_name
+          EOF
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
