@@ -49,6 +49,10 @@ jobs:
           script: |
             cd /root/fishventure-api-service
             
+            # Создание виртуального окружения
+            python3 -m venv venv
+            source venv/bin/activate
+          
             # Проверка наличия локальных изменений
             if [[ -n $(git status --porcelain) ]]; then
               git stash push -m "Сохранение локальных изменений перед обновлением"
