@@ -1,20 +1,23 @@
+import os
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import pymysql
 from datetime import datetime, timedelta
+
+# Устанавливаем переменную окружения перед импортом app
+os.environ["TESTING"] = "1"
+
 from api.v1.main import app
 from api.v1.database import Base, get_db
 from api.v1.config import settings
 from api.v1.models import Player
 
-# ----- Конфигурация тестовой БД ----- #
-
 @pytest.fixture(scope="session", autouse=True)
 def prepare_test_environment():
-    """Подготовка тестового окружения перед всеми тестами"""
-    # 1. Создаем тестовую БД если не существует
+    """Подготовка тестового окружения"""
+    # 1. Создаём тестовую БД
     try:
         conn = pymysql.connect(
             host="localhost",
@@ -23,25 +26,24 @@ def prepare_test_environment():
             autocommit=True
         )
         with conn.cursor() as cursor:
-            cursor.execute("CREATE DATABASE IF NOT EXISTS fishventure_test_db")
+            cursor.execute("DROP DATABASE IF EXISTS fishventure_test_db")
+            cursor.execute("CREATE DATABASE fishventure_test_db")
     except Exception as e:
-        pytest.fail(f"Не удалось создать тестовую БД: {str(e)}")
+        pytest.fail(f"Ошибка создания БД: {str(e)}")
     finally:
-        if 'conn' in locals():
-            conn.close()
+        conn.close()
 
-    # 2. Создаем таблицы
+    # 2. Создаём таблицы
     engine = create_engine(settings.TEST_DATABASE_URL)
     Base.metadata.create_all(bind=engine)
     engine.dispose()
 
     yield
 
-    # 3. Очистка после всех тестов (опционально)
-    # Можно раскомментировать для полной очистки
-    # engine = create_engine(settings.TEST_DATABASE_URL)
-    # Base.metadata.drop_all(bind=engine)
-    # engine.dispose()
+    # 3. Очистка после тестов (опционально)
+    engine = create_engine(settings.TEST_DATABASE_URL)
+    Base.metadata.drop_all(bind=engine)
+    engine.dispose()
 
 # ----- Основные фикстуры ----- #
 

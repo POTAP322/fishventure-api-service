@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 from api.v1.database import engine, Base
 from .routers import auth, player_logs, logs, qwen
@@ -5,7 +7,8 @@ from .routers import auth, player_logs, logs, qwen
 app = FastAPI(title="Fishventure API")
 
 # Создаем таблицы в БД
-Base.metadata.create_all(bind=engine)
+if not os.getenv("TESTING"):  # Создаём таблицы только когда не в режиме тестирования
+    Base.metadata.create_all(bind=engine)
 
 # Подключаем роутеры
 app.include_router(auth.router)
